@@ -39,6 +39,8 @@ body {
 }
 
 main {
+	overflow: hidden;
+	resize: both;
 	margin-top: 7rem;
 	margin-inline: 1rem;
 	position: relative;
@@ -51,7 +53,7 @@ main {
 
 img {
 	height: auto;
-	padding: 1.7rem;
+	padding: 1rem;
 	border-radius: 50%;
 	transform: scale(0.6);
 	background-color: var(--Off-black);
@@ -78,6 +80,7 @@ form {
 }
 
 .validation {
+	font-size: clamp();
 	opacity: 1;
 	font-style: italic;
 }
@@ -94,16 +97,12 @@ hr {
 	align-items: center;
 }
 
-.output-item span,
-.output-text {
-	font-size: 32px;
-}
-
 span {
 	color: var(--Purple);
 }
 
 .output-text {
 	color: var(--Off-black);
-	font-size: 2rem;
+	font-size: clamp(1rem, 2rem, 4rem);
+	line-height: 3rem;
 }
