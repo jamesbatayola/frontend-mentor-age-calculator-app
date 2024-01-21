@@ -30,8 +30,15 @@ const getInputDate = () => {
 
 // input checker ----------
 
+let isValid = false;
+
+const allInput = document.querySelectorAll("input");
+
 const inputChecker = () => {
-	if (parseInt(yearInput.value) > currentYear) console.log("to big!");
+	allInput.forEach((eachInput) => {
+		if (!eachInput.value) {
+		}
+	});
 };
 
 // output calculations ----------
@@ -53,8 +60,8 @@ const calculate = () => {
 	calcYear = currentYear - givenYear;
 
 	// months
-	if (currentMonth > givenMonth) {
-		calcMonth = currentMonth - givenMonth;
+	if (currentMonth < givenMonth) {
+		calcMonth = givenMonth - currentMonth;
 		calcYear--;
 	} else {
 		calcMonth = Math.abs(currentMonth - givenMonth);
@@ -69,3 +76,5 @@ const calculate = () => {
 // button
 
 const button = document.querySelector("img");
+
+button.onclick = calculate;
