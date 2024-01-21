@@ -33,8 +33,11 @@ const allInput = document.querySelectorAll("input");
 const inputChecker = () => {
 	allInput.forEach((eachInput) => {
 		if (!eachInput.value) {
+			console.log("empty");
 		}
 	});
+	// if (!dayInput.value && !monthInput.value && !yearInput.value) console.log("input is empty");
+	// if (monthInput.value > 12) console.log("month invalid");
 };
 
 // output calculations ----------

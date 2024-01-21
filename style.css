@@ -21,7 +21,7 @@
 	--Smokey-grey: hsl(0, 1%, 44%);
 	--Off-black: hsl(0, 0%, 8%);
 
-	--fs-xl: 3.3rem;
+	--fs-xl: 3rem;
 }
 img,
 svg {
@@ -37,6 +37,7 @@ body {
 	background-color: var(--Off-white);
 }
 main {
+	min-width: 320px;
 	overflow: hidden;
 	resize: both;
 	margin-top: 3.5rem;
@@ -45,7 +46,7 @@ main {
 	padding: 3rem 1.5rem;
 	border-radius: 1.5rem;
 	background-color: var(--White);
-	border-bottom-right-radius: 7rem;
+	border-bottom-right-radius: 6rem;
 	box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.1);
 }
 img {
@@ -68,7 +69,7 @@ form {
 	padding-bottom: 2rem;
 }
 label {
-	font-size: 0.85rem;
+	font-size: 0.75rem;
 	letter-spacing: 2.5px;
 	color: var(--Smokey-grey);
 	margin-bottom: 0.25rem;
