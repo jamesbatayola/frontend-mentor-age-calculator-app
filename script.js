@@ -33,7 +33,9 @@ const allInput = document.querySelectorAll("input");
 const inputChecker = () => {
 	allInput.forEach((eachInput) => {
 		if (!eachInput.value) {
-			console.log("empty");
+			eachInput.style.borderColor = "hsl(0, 100%, 67%)";
+			eachInput.nextElementSibling.classList.toggle("error-message");
+			eachInput.previousElementSibling.classList.toggle("error-message");
 		}
 	});
 	// if (!dayInput.value && !monthInput.value && !yearInput.value) console.log("input is empty");

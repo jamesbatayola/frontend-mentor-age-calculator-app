@@ -57,7 +57,7 @@ img {
 	cursor: pointer;
 	border-radius: 50%;
 	position: absolute;
-	transform: translateX(-50%) scale(0.7);
+	transform: translateX(-50%) scale(0.75);
 	background-color: var(--Purple);
 }
 img:hover {
@@ -81,14 +81,15 @@ label {
 .form-item input {
 	width: 100%;
 	outline: none;
-	margin-bottom: 0.5rem;
+	margin-bottom: 0.2rem;
 	font-size: 1.5rem;
 	border-radius: 0.5rem;
 	padding: 0.7rem 0.2rem 0.7rem 0.8rem;
 	border: 1px solid var(--Light-grey);
 }
 .validation {
-	opacity: 1;
+	opacity: 0;
+	transition: 300ms;
 	font-style: italic;
 	font-size: 0.75rem;
 	line-height: 0.75rem;
@@ -137,21 +138,29 @@ section {
 		margin: 0;
 		max-width: 700px;
 		margin-inline: 2rem;
-		padding-block: 3.5rem;
+		padding-block: 2.7rem;
 		padding-inline: 2.5rem;
 		border-bottom-right-radius: 10rem;
 	}
 	form {
 		gap: 1.5rem;
-		max-width: 75%;
-		padding-bottom: 2.5rem;
+		max-width: 80%;
 	}
 	section {
-		line-height: 6rem;
-		padding-top: 2.8rem;
+		line-height: 5.5rem;
+		padding-top: 2.5rem;
 	}
 	img {
 		left: 88.5%;
 		transform: scale(0.85);
 	}
+}
+
+.error-message {
+	opacity: 1;
+	color: var(--Light-red);
+}
+
+.error-input {
+	border-color: var(--Light-red);
 }
