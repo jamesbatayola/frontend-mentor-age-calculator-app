@@ -30,8 +30,8 @@ svg {
 	display: block;
 }
 body {
-	display: flex;
 	min-height: 100svh;
+	display: flex;
 	align-items: start;
 	justify-content: center;
 	background-color: var(--Off-white);
@@ -137,15 +137,17 @@ section {
 		max-width: 700px;
 		margin-inline: 2rem;
 		padding-inline: 2.5rem;
+		padding-block: 3.5rem;
 		border-bottom-right-radius: 10rem;
 	}
 	form {
-		max-width: 75%;
 		gap: 1.5rem;
-		padding-bottom: 2rem;
+		max-width: 75%;
+		padding-bottom: 2.5rem;
 	}
 	section {
-		line-height: 5.2rem;
+		line-height: 6rem;
+		padding-top: 2.8rem;
 	}
 	img {
 		left: 88.5%;
