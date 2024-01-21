@@ -15,15 +15,57 @@ const currentYear = currentDate.getYear(),
 	currentMonth = currentDate.getMonth() + 1,
 	currentDay = currentDate.getDate();
 
-// given date
+let givenDate, givenYear, givenMonth, givenDay;
+
+const getInputDate = () => {
+	givenDate = new Date(parseInt(yearInput.value), parseInt(monthInput.value) - 1, parseInt(dayInput.value));
+	givenYear = givenDate.getYear();
+	givenMonth = givenDate.getMonth() + 1;
+	givenDay = givenDate.getDate();
+	console.log(givenDate);
+	console.log(currentYear - givenYear);
+	console.log(givenMonth);
+	console.log(givenDay);
+};
+
+// input checker ----------
+
+const inputChecker = () => {
+	if (parseInt(yearInput.value) > currentYear) console.log("to big!");
+};
+
+// output calculations ----------
+
+const outputData = () => {
+	dayOutput.textContent = calcDay;
+	monthOutput.textContent = calcMonth;
+	yearOutput.textContent = calcYear;
+};
+
+// calculations ----------
+
+let calcYear, calcMonth, calcDay;
 
 const calculate = () => {
-	const givenDate = new Date(yearOutput, monthOutput, dayOutput);
-	const givenYear = givenDate.getYear(),
-		givenMonth = givenDate.getMonth() + 1,
-		givenDay = givenDate.getDay();
+	getInputDate();
 
-	if (yearOutput.textContent) yearOutput.textContent = currentYear - givenYear;
-	if (monthOutput.textContent) monthOutput.textContent = currentMonth - givenMonth;
-	if (dayOutput.textContent) dayOutput.textContent = currentDay - givenDay;
+	// years
+	calcYear = currentYear - givenYear;
+
+	// months
+	if (currentMonth > givenMonth) {
+		calcMonth = currentMonth - givenMonth;
+		calcYear--;
+	} else {
+		calcMonth = Math.abs(currentMonth - givenMonth);
+	}
+
+	// days
+	calcDay = Math.abs(currentDay - givenDay);
+
+	outputData();
 };
+
+// button
+
+const button = document.querySelector("img");
