@@ -22,10 +22,6 @@ const getInputDate = () => {
 	givenYear = givenDate.getYear();
 	givenMonth = givenDate.getMonth() + 1;
 	givenDay = givenDate.getDate();
-	console.log(givenDate);
-	console.log(currentYear - givenYear);
-	console.log(givenMonth);
-	console.log(givenDay);
 };
 
 // input checker ----------
@@ -61,14 +57,26 @@ const calculate = () => {
 
 	// months
 	if (currentMonth < givenMonth) {
-		calcMonth = givenMonth - currentMonth;
+		calcMonth = 13 - givenMonth;
 		calcYear--;
 	} else {
 		calcMonth = Math.abs(currentMonth - givenMonth);
 	}
 
 	// days
-	calcDay = Math.abs(currentDay - givenDay);
+	if (currentDay < givenDay) {
+		calcDay = 31 - (givenDay - currentDay);
+		if (calcYear === 1) {
+			calcYear = 0;
+		}
+		if (calcMonth === 0) {
+			calcMonth = 11;
+		} else {
+			calcMonth--;
+		}
+	} else {
+		calcDay = currentDay - givenDay;
+	}
 
 	outputData();
 };
