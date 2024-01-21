@@ -30,16 +30,35 @@ let isValid = false;
 
 const allInput = document.querySelectorAll("input");
 
+const errorDisplay = (input) => {
+	input.nextElementSibling.classList.add("error-message");
+	input.previousElementSibling.classList.add("error-message");
+	input.style.borderColor = "hsl(0, 100%, 67%)";
+};
+
 const inputChecker = () => {
 	allInput.forEach((eachInput) => {
 		if (!eachInput.value) {
-			eachInput.style.borderColor = "hsl(0, 100%, 67%)";
-			eachInput.nextElementSibling.classList.toggle("error-message");
-			eachInput.previousElementSibling.classList.toggle("error-message");
+			eachInput.nextElementSibling.textContent = "This field is required";
+			errorDisplay(eachInput);
+		}
+
+		if (isNaN(eachInput.value)) {
+			eachInput.nextElementSibling.textContent = "Invalid number";
+			errorDisplay(eachInput);
 		}
 	});
-	// if (!dayInput.value && !monthInput.value && !yearInput.value) console.log("input is empty");
-	// if (monthInput.value > 12) console.log("month invalid");
+	// day input
+	if (dayInput.value > 31) {
+		dayInput.nextElementSibling.textContent = "To much days";
+		errorDisplay(dayInput);
+	}
+
+	// month input
+	if (monthInput.value > 12) {
+		monthInput.nextElementSibling.textContent = "To much months";
+		errorDisplay(monthInput);
+	}
 };
 
 // output calculations ----------
