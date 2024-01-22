@@ -79,7 +79,7 @@ const isInputsValid = () => {
 const inputChecker = () => {
 	// day input
 	if (dayInput.value > 31) {
-		dayInput.nextElementSibling.textContent = "To much days";
+		dayInput.nextElementSibling.textContent = "Too much days";
 		errorDisplay(dayInput);
 	} else {
 		removeError(dayInput);
@@ -87,7 +87,7 @@ const inputChecker = () => {
 
 	// month input
 	if (monthInput.value > 12) {
-		monthInput.nextElementSibling.textContent = "To much months";
+		monthInput.nextElementSibling.textContent = "Too much months";
 		errorDisplay(monthInput);
 	} else {
 		removeError(monthInput);
@@ -111,7 +111,7 @@ const inputChecker = () => {
 
 	// year input
 	if (yearInput.value > 2024) {
-		yearInput.nextElementSibling.textContent = "To much years";
+		yearInput.nextElementSibling.textContent = "Too much years";
 		errorDisplay(yearInput);
 	} else {
 		removeError(yearInput);
