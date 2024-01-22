@@ -118,7 +118,7 @@ const inputChecker = () => {
 	}
 
 	allInput.forEach((eachInput) => {
-		if (eachInput.value === "") {
+		if (eachInput.value === "" || eachInput.value === "0") {
 			eachInput.nextElementSibling.textContent = "This field is required";
 			errorDisplay(eachInput);
 			isValid = false;
