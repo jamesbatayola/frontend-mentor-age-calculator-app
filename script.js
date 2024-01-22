@@ -55,12 +55,14 @@ let isValid = false;
 const allInput = document.querySelectorAll("input");
 
 const errorDisplay = (input) => {
+	input.dataset.valid = false;
 	input.nextElementSibling.classList.add("error-message");
 	input.previousElementSibling.classList.add("error-message");
 	input.style.borderColor = "hsl(0, 100%, 67%)";
 };
 
 const removeError = (input) => {
+	input.dataset.valid = true;
 	input.nextElementSibling.classList.remove("error-message");
 	input.previousElementSibling.classList.remove("error-message");
 	input.style.borderColor = "hsl(0, 0%, 86%)";
@@ -174,6 +176,8 @@ const calculate = () => {
 
 	outputData();
 };
+
+function run() {}
 
 // button
 
