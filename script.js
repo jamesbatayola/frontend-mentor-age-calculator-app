@@ -5,6 +5,30 @@ const dayInput = document.querySelector(".day-input"),
 	monthInput = document.querySelector(".month-input"),
 	yearInput = document.querySelector(".year-input");
 
+dayInput.addEventListener("keypress", (event) => {
+	if (isNaN(event.key)) {
+		event.preventDefault();
+	} else if (dayInput.value.length === 2) {
+		event.preventDefault();
+	}
+});
+
+monthInput.addEventListener("keypress", (event) => {
+	if (isNaN(event.key)) {
+		event.preventDefault();
+	} else if (monthInput.value.length === 2) {
+		event.preventDefault();
+	}
+});
+
+yearInput.addEventListener("keypress", (event) => {
+	if (isNaN(event.key)) {
+		event.preventDefault();
+	} else if (yearInput.value.length === 4) {
+		event.preventDefault();
+	}
+});
+
 // output
 const dayOutput = document.querySelector(".day-output"),
 	monthOutput = document.querySelector(".month-output"),
@@ -43,46 +67,68 @@ const removeError = (input) => {
 };
 
 const inputChecker = () => {
-	allInput.forEach((eachInput) => {
-		if (eachInput.value === "") {
-			eachInput.nextElementSibling.textContent = "This field is required";
-			errorDisplay(eachInput);
-		} else if (isNaN(eachInput.value)) {
-			eachInput.nextElementSibling.textContent = "Invalid number";
-			errorDisplay(eachInput);
-		} else {
-			removeError(eachInput);
-		}
-	});
 	// day input
 	if (dayInput.value > 31) {
 		dayInput.nextElementSibling.textContent = "To much days";
 		errorDisplay(dayInput);
+	} else {
+		removeError(dayInput);
+		isValid = true;
 	}
 
 	// month input
 	if (monthInput.value > 12) {
 		monthInput.nextElementSibling.textContent = "To much months";
 		errorDisplay(monthInput);
+		isValid = false;
+	} else {
+		removeError(monthInput);
+		isValid = true;
 	}
 
 	if (monthInput.value == 4 || monthInput.value == 6 || monthInput.value == 9 || monthInput.value == 11) {
 		if (dayInput.value > 30) {
 			dayInput.nextElementSibling.textContent = "The month has 30 days";
 			errorDisplay(dayInput);
+			isValid = false;
+		} else {
+			removeError(dayInput);
+			isValid = true;
 		}
 	} else if (monthInput.value == 2) {
 		if (dayInput.value > 28) {
 			dayInput.nextElementSibling.textContent = "The month has 28 days";
 			errorDisplay(dayInput);
+		} else {
+			removeError(dayInput);
+			isValid = false;
 		}
 	}
 
 	// year input
-	if (currentYear < givenYear) {
+	if (yearInput.value > 2024) {
 		yearInput.nextElementSibling.textContent = "To much years";
 		errorDisplay(yearInput);
+		isValid = false;
+	} else {
+		removeError(yearInput);
+		isValid = true;
 	}
+
+	allInput.forEach((eachInput) => {
+		if (eachInput.value === "") {
+			eachInput.nextElementSibling.textContent = "This field is required";
+			errorDisplay(eachInput);
+			isValid = false;
+		} else if (isNaN(eachInput.value)) {
+			eachInput.nextElementSibling.textContent = "Invalid number";
+			errorDisplay(eachInput);
+			isValid = false;
+		} else {
+			// removeError(eachInput);
+			isValid = true;
+		}
+	});
 };
 
 // output calculations ----------
