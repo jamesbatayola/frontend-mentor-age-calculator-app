@@ -125,6 +125,22 @@ section {
 	padding-top: 3.3rem;
 	line-height: 3.5rem;
 }
+
+.attribution {
+	left: 50%;
+	bottom: 1rem;
+	/* display: none; */
+	position: absolute;
+	transform: translateX(-50%);
+}
+
+.attribution,
+a {
+	color: rgba(0, 0, 0, 0.212);
+	font-size: 0.6rem;
+	text-wrap: nowrap;
+}
+
 @media (min-width: 698px) {
 	:root {
 		--fs-xl: 5rem;
@@ -152,6 +168,13 @@ section {
 	img {
 		left: 88.5%;
 		transform: scale(0.85);
+	}
+	.attribution {
+		display: block;
+	}
+	.attribution,
+	a {
+		font-size: 1rem;
 	}
 }
 
