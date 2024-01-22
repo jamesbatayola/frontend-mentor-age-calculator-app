@@ -36,16 +36,22 @@ const errorDisplay = (input) => {
 	input.style.borderColor = "hsl(0, 100%, 67%)";
 };
 
+const removeError = (input) => {
+	input.nextElementSibling.classList.remove("error-message");
+	input.previousElementSibling.classList.remove("error-message");
+	input.style.borderColor = "hsl(0, 0%, 86%)";
+};
+
 const inputChecker = () => {
 	allInput.forEach((eachInput) => {
-		if (!eachInput.value) {
+		if (eachInput.value === "") {
 			eachInput.nextElementSibling.textContent = "This field is required";
 			errorDisplay(eachInput);
-		}
-
-		if (isNaN(eachInput.value)) {
+		} else if (isNaN(eachInput.value)) {
 			eachInput.nextElementSibling.textContent = "Invalid number";
 			errorDisplay(eachInput);
+		} else {
+			removeError(eachInput);
 		}
 	});
 	// day input
@@ -58,6 +64,24 @@ const inputChecker = () => {
 	if (monthInput.value > 12) {
 		monthInput.nextElementSibling.textContent = "To much months";
 		errorDisplay(monthInput);
+	}
+
+	if (monthInput.value == 4 || monthInput.value == 6 || monthInput.value == 9 || monthInput.value == 11) {
+		if (dayInput.value > 30) {
+			dayInput.nextElementSibling.textContent = "The month has 30 days";
+			errorDisplay(dayInput);
+		}
+	} else if (monthInput.value == 2) {
+		if (dayInput.value > 28) {
+			dayInput.nextElementSibling.textContent = "The month has 28 days";
+			errorDisplay(dayInput);
+		}
+	}
+
+	// year input
+	if (currentYear < givenYear) {
+		yearInput.nextElementSibling.textContent = "To much years";
+		errorDisplay(yearInput);
 	}
 };
 
