@@ -39,7 +39,6 @@ body {
 main {
 	min-width: 320px;
 	overflow: hidden;
-	resize: both;
 	margin-top: 3.5rem;
 	margin-inline: 1rem;
 	position: relative;

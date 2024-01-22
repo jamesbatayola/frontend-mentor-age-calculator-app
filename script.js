@@ -68,6 +68,14 @@ const removeError = (input) => {
 	input.style.borderColor = "hsl(0, 0%, 86%)";
 };
 
+const isInputsValid = () => {
+	if (dayInput.dataset.valid == "true" && monthInput.dataset.valid == "true" && yearInput.dataset.valid == "true") {
+		return true;
+	} else {
+		return false;
+	}
+};
+
 const inputChecker = () => {
 	// day input
 	if (dayInput.value > 31) {
@@ -75,27 +83,22 @@ const inputChecker = () => {
 		errorDisplay(dayInput);
 	} else {
 		removeError(dayInput);
-		isValid = true;
 	}
 
 	// month input
 	if (monthInput.value > 12) {
 		monthInput.nextElementSibling.textContent = "To much months";
 		errorDisplay(monthInput);
-		isValid = false;
 	} else {
 		removeError(monthInput);
-		isValid = true;
 	}
 
 	if (monthInput.value == 4 || monthInput.value == 6 || monthInput.value == 9 || monthInput.value == 11) {
 		if (dayInput.value > 30) {
 			dayInput.nextElementSibling.textContent = "The month has 30 days";
 			errorDisplay(dayInput);
-			isValid = false;
 		} else {
 			removeError(dayInput);
-			isValid = true;
 		}
 	} else if (monthInput.value == 2) {
 		if (dayInput.value > 28) {
@@ -103,7 +106,6 @@ const inputChecker = () => {
 			errorDisplay(dayInput);
 		} else {
 			removeError(dayInput);
-			isValid = false;
 		}
 	}
 
@@ -111,10 +113,8 @@ const inputChecker = () => {
 	if (yearInput.value > 2024) {
 		yearInput.nextElementSibling.textContent = "To much years";
 		errorDisplay(yearInput);
-		isValid = false;
 	} else {
 		removeError(yearInput);
-		isValid = true;
 	}
 
 	allInput.forEach((eachInput) => {
@@ -177,10 +177,15 @@ const calculate = () => {
 	outputData();
 };
 
-function run() {}
+function run() {
+	inputChecker();
+	if (isValid === true && isInputsValid()) {
+		calculate();
+	}
+}
 
 // button
 
 const button = document.querySelector("img");
 
-button.onclick = calculate;
+button.onclick = run;
